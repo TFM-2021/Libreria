@@ -7,9 +7,9 @@
 #' @export fitGEV
 
 
+fitGEV =  function(x){
 
-fitGEV = function(x){
-  eq = function( par){
+  eq = function(par){
     media <- par[1]
     desv <- par[2]
     E <- par[3]
@@ -17,5 +17,49 @@ fitGEV = function(x){
 
 
   }
-  optim(par = c(0.1,0.1,0.1), fn = eq)
+
+  resultados_fit <- tibble("Parametro"= c("location", "scale", "shape"),
+                           "Valores_optimos"= optim(par = c(0.1,0.1,0.1), fn = eq)$par)
+
+  verosimilitud <- c(optim(par = c(0.1,0.1,0.1), fn = eq)$value)
+
+
+  secuencia <-seq(as.double(resultados_fit[1,2]-0.1),
+                  as.double(resultados_fit[1,2]+0.1),0.001)
+
+
+  verosimilitud_funcion_media <- sapply(secuencia, function(media){
+    E <- as.double(resultados_fit[3,2])
+    desv <- as.double(resultados_fit[2,2])
+
+    (-length(x)*log(desv)-(1+1/E)*sum(log(1+E*((x-media)/desv)))-sum((1+E*((x-media)/desv))^(-1/E)))*-1
+  })
+
+  df <- data.frame(secuencia, verosimilitud_funcion_media)
+
+  plot_location <<- ggplot(df,aes(secuencia, verosimilitud_funcion_media))+
+    geom_line() +
+    xlim(as.double(resultados_fit[1,2]-0.1),
+         as.double(resultados_fit[1,2]+0.1)) +
+
+    labs(title = "Relación Verosimilitud / Location",
+         x = "Location",
+         y = "Verosimilitud",
+         color = NULL) +
+
+    geom_hline(yintercept=min(verosimilitud_funcion_media), color="red") +
+
+    geom_point(data = df[which.min(df$verosimilitud_funcion_media), ],
+               color="red",
+               size=3) +
+
+    geom_text_repel(data = df[which.min(df$verosimilitud_funcion_media), ],
+                    aes(secuencia, verosimilitud_funcion_media,
+                        label = round(secuencia,2))) +
+    theme_minimal()
+
+  list("Valores_optimos"=resultados_fit,
+       "Negative_Log_Likelihood"=verosimilitud)
+
 }
+
