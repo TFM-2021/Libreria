@@ -13,4 +13,5 @@ Imports:
   base,
   stats,
   dplyr,
-  ggrepel
+  ggrepel,
+  ggplot2

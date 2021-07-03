@@ -1,3 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("graphics", "curve")
 importFrom("stats", "optim")
+importFrom("dplyr", "tibble")
+import("ggplot2")
+importFrom("ggrepel", "geom_text_repel")
