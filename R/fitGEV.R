@@ -19,9 +19,9 @@ fitGEV =   function(x){
   }
 
   resultados_fit <- tibble("Parametro"= c("location", "scale", "shape"),
-                           "Valores_optimos"= optim(par = c(1,1,1), fn = eq)$par)
+                           "Valores_optimos"= optim(c(0.1,0.1,0.1),fn = eq, method = "SANN")$par)
 
-  verosimilitud <- c(optim(par = c(1,1,1), fn = eq)$value)
+  verosimilitud <- c(optim(c(0.1,0.1,0.1),fn = eq, method = "SANN")$value)
 
 
   valor_location <- as.double(resultados_fit[1,2])

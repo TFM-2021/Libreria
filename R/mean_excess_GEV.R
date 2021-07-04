@@ -25,6 +25,11 @@ mean_excess_GEV = function(data){
   ggplot()+
     geom_line(aes(rango_datos, vector))+
     geom_line(aes(rango_datos, vector-2*vector_sd))+
-    geom_line(aes(rango_datos, vector+2*vector_sd))
+    geom_line(aes(rango_datos, vector+2*vector_sd)) +
+
+    labs(title = "Mean excess",
+         x = "Threshold",
+         y = "Mean excess",
+         color = NULL)
 
 }

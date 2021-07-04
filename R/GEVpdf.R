@@ -19,7 +19,7 @@ GEVpdf = function(x, E, media, desv,...){
         main = "Distribucion GEV")
     Maximaverosimilitud <- (-length(x)*log(desv)   -(1+1/E)*sum(log(1+E*((x-media)/desv)))     -sum((1+E*((x-media)/desv))^(-1/E)))*-1
 
-  return(print(paste0(" Negative Log-Likelihood Value: ", Maximaverosimilitud)))
+  return(print(paste0("Negative Log-Likelihood Value: ", Maximaverosimilitud)))
 }
 
 
