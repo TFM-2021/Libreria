@@ -9,9 +9,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Imports:
-  base,
-  stats,
-  dplyr,
-  ggrepel,
-  ggplot2
+Imports: base, stats, dplyr, ggrepel, ggplot2
