@@ -8,18 +8,27 @@
 #' @export pdfGEV
 
 require(base)
-pdfGEV = function(x, E, media, desv,...){
+pdfGEV = function(fit, data, limite_inferior, limite_superior){
+  location <- fit$Valores_optimos$Valores_optimos[1]
+  scale <- fit$Valores_optimos$Valores_optimos[2]
+  shape <- fit$Valores_optimos$Valores_optimos[3]
 
-  eq = function(x){
-    t <- (1+E*((x-media)/desv))^(-1/E)
-    (1/desv)*(t^(E+1))*exp(1)^(-t)
-  }
+  df <-tibble("Empirico"= data,
+              "Teorica" = rgev(length(data), loc = location, scale = scale, shape = shape))
 
-  curve(eq, from=min(x), to=max(x), xlab="x", ylab="y",
-        main = "Distribucion GEV")
-    Maximaverosimilitud <- (-length(x)*log(desv)   -(1+1/E)*sum(log(1+E*((x-media)/desv)))     -sum((1+E*((x-media)/desv))^(-1/E)))*-1
+  print(paste0("Negative Log-Likelihood Value: ", fit$Negative_Log_Likelihood))
 
-  return(print(paste0("Negative Log-Likelihood Value: ", Maximaverosimilitud)))
+  ggplot(df)+
+    geom_density(aes(Empirico))+
+    geom_density(aes(Teorica),color="red")+
+    xlim(c(limite_inferior,limite_superior))+
+    labs(title = "PDF datos vs modelo",
+         x = "Datos",
+         y = "Densidad",
+         color = NULL)
+
+
 }
+
 
 
