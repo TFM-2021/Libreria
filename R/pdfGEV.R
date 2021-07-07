@@ -5,10 +5,10 @@
 #' @param media  dgdgdfg
 #' @param desv dfg dg
 #' @return el histograma con la densidad normal superpuesta
-#' @export GEVpdf
+#' @export pdfGEV
 
 require(base)
-GEVpdf = function(x, E, media, desv,...){
+pdfGEV = function(x, E, media, desv,...){
 
   eq = function(x){
     t <- (1+E*((x-media)/desv))^(-1/E)

@@ -7,7 +7,7 @@
 #' @export fitGEV
 
 
-fitGEV =   function(x){
+fitGEV =   function(x, parametros_iniciales){
 
   eq = function(par){
     media <- par[1]
@@ -18,10 +18,11 @@ fitGEV =   function(x){
 
   }
 
+  optimizacion <- optim(parametros_iniciales,fn = eq)
   resultados_fit <- tibble("Parametro"= c("location", "scale", "shape"),
-                           "Valores_optimos"= optim(c(0.1,0.1,0.1),fn = eq, method = "SANN")$par)
+                           "Valores_optimos"= optimizacion$par)
 
-  verosimilitud <- c(optim(c(0.1,0.1,0.1),fn = eq, method = "SANN")$value)
+  verosimilitud <- c(optimizacion$value)
 
 
   valor_location <- as.double(resultados_fit[1,2])
