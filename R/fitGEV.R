@@ -17,7 +17,8 @@ fitGEV =   function(x, parametros_iniciales){
 
   }
 
-  optimizacion <- optim(parametros_iniciales,fn = eq)
+  optimizacion <- optim(parametros_iniciales,fn = eq,hessian = TRUE)
+
   resultados_fit <- tibble("Parametro"= c("location", "scale", "shape"),
                            "Valores_optimos"= optimizacion$par)
 
@@ -149,7 +150,13 @@ fitGEV =   function(x, parametros_iniciales){
     theme_minimal()
   # RESUMEN------------------------------------------------------------------
   list("Valores_optimos"=resultados_fit,
-       "Negative_Log_Likelihood"=verosimilitud)
+       "Negative_Log_Likelihood"=verosimilitud,
+       "Desviaciones_tipicas_estimadas" = tibble("location"=sqrt(solve(optimizacion$hessian)[1,1]),
+                                                 "scale"=sqrt(solve(optimizacion$hessian)[2,2]),
+                                                 "shape"=sqrt(solve(optimizacion$hessian)[3,3])),
+       "Matriz_covarianzas" = tibble("location"=solve(optimizacion$hessian)[1,],
+                                     "scale"=solve(optimizacion$hessian)[2,],
+                                     "shape"=solve(optimizacion$hessian)[3,]))
 
 }
 
