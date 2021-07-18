@@ -1,4 +1,3 @@
-
 #' @title
 #' @description Funcion que dibuja el histograma de una variable x, superponiendo la densidad normal
 #' ajustada. Si el usuario lo desea puede superponer tambien un estimador de nucleo de la densidad.
