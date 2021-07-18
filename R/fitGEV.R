@@ -6,7 +6,7 @@
 #' @export fitGEV
 
 
-fitGEV =   function(x, parametros_iniciales){
+fitGEV =   function(x, parametros_iniciales, metodo_optimizacion=NULL){
 
   eq = function(par){
     media <- par[1]
@@ -17,7 +17,7 @@ fitGEV =   function(x, parametros_iniciales){
 
   }
 
-  optimizacion <- optim(parametros_iniciales,fn = eq,hessian = TRUE)
+  optimizacion <- optim(parametros_iniciales,fn = eq,hessian = TRUE,method = metodo_optimizacion)
 
   resultados_fit <- tibble("Parametro"= c("location", "scale", "shape"),
                            "Valores_optimos"= optimizacion$par)
