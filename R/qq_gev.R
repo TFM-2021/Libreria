@@ -1,8 +1,7 @@
-#' @title
-#' @description Funcion que dibuja el histograma de una variable x, superponiendo la densidad normal
-#' ajustada. Si el usuario lo desea puede superponer tambien un estimador de nucleo de la densidad.
-#' @param x vector de datos a ajustar
-#' @return el histograma con la densidad normal superpuesta
+#' @description Dibuja un gráfico de cuantiles reales y modelados
+#' @param model_fit modelo ajustado
+#' @param data datos ajustados
+#' @return Gráfico de qq-plot
 #' @export qq_gev
 
 
@@ -20,8 +19,8 @@ qq_gev <- function(model_fit, data){
 
 
   qq <- function(p,
-                 shape = shape_model,
                  location = location_model,
+                 shape = shape_model,
                  scale = scale_model){
 
     location + (scale/shape) * (( - logb(p))^( - shape) - 1)

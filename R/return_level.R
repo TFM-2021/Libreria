@@ -1,19 +1,15 @@
-#' @title Dibuja el histograma de una variable superponiendo la densidad normal ajustada
-#' @description Funcion que dibuja el histograma de una variable x, superponiendo la densidad normal
-#' @param data vector de datos cuyo histograma se va a calcular
-#' @param year
-#' @return el histograma con la densidad normal superpuesta
+#' @description Calcula el retorno de los datos para un determinado año
+#' @param model_fit modelo ajustado
+#' @param year año que quieres calcular
+#' @return el return level para el año elegido
 #' @export return_level
 #'
 
 
-
-
-
-return_level = function(year, data){
-  location <- data$Valores_optimos$Valores_optimos[1]
-  scale <-  data$Valores_optimos$Valores_optimos[2]
-  shape <- data$Valores_optimos$Valores_optimos[3]
+return_level = function(year, model_fit){
+  location <- model_fit$Valores_optimos$Valores_optimos[1]
+  scale <-  model_fit$Valores_optimos$Valores_optimos[2]
+  shape <- model_fit$Valores_optimos$Valores_optimos[3]
   p <- 1/year
   retorno <- location - scale/shape*(1-(-log(1-p))^(-shape))
   print(paste0("Para el año ", year," se espera: ",retorno ))

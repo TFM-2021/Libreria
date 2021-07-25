@@ -1,4 +1,3 @@
-#' @title
 #' @description Cálculo de la estacionariedad con Mann-Kendall. Si return > 0 = no estacionario
 #' @param data serie
 #' @return el histograma con la densidad normal superpuesta

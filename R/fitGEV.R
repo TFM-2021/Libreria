@@ -1,8 +1,9 @@
-#' @title
-#' @description Funcion que dibuja el histograma de una variable x, superponiendo la densidad normal
-#' ajustada. Si el usuario lo desea puede superponer tambien un estimador de nucleo de la densidad.
+#' @title FITGEV
+#' @description Ajusta por MLE los datos a una distribución GEV
 #' @param x vector de datos a ajustar
-#' @return el histograma con la densidad normal superpuesta
+#' @param parametros_iniciales Valores con los que empezar a optimizar
+#' @param metodo_optimizacion Sí "SANN" = optimizacion por recocido simulado
+#' @return parámetros GEV óptimos y gráficos comparándolos con la verosimilitud
 #' @export fitGEV
 
 

@@ -1,7 +1,6 @@
-#' @title Dibuja el histograma de una variable superponiendo la densidad normal ajustada
-#' @description Funcion que dibuja el histograma de una variable x, superponiendo la densidad normal
+#' @description Dibuja un gráfico con el exceso de media y su desviación típica para calcular el threshold
 #' @param data vector de datos cuyo histograma se va a calcular
-#' @return el histograma con la densidad normal superpuesta
+#' @return gráfico con el exceso de media
 #' @export mean_excess_GEV
 
 
