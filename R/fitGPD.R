@@ -38,6 +38,8 @@ fitGPD = function(data,threshold){
                                  "Valores_optimos"= optimizacion$par),
 
        "Negative_Log_Likelihood"=tibble(verosimilitud),
+       "AIC" =2*2+2*verosimilitud,
+       "BIC" = 2*verosimilitud+2*log(length(data_u)),
 
        "Desviaciones_tipicas_estimadas" = tibble("scale"=sqrt(solve(optimizacion$hessian)[1,1]),
                                                  "shape"=sqrt(solve(optimizacion$hessian)[2,2])),

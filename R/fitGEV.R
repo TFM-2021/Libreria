@@ -152,6 +152,8 @@ fitGEV =   function(x, parametros_iniciales, metodo_optimizacion=NULL){
   # RESUMEN------------------------------------------------------------------
   list("Valores_optimos"=resultados_fit,
        "Negative_Log_Likelihood"=verosimilitud,
+       "AIC" =2*3+2*verosimilitud,
+       "BIC" = 2*verosimilitud+3*log(length(x)),
        "Desviaciones_tipicas_estimadas" = tibble("location"=sqrt(solve(optimizacion$hessian)[1,1]),
                                                  "scale"=sqrt(solve(optimizacion$hessian)[2,2]),
                                                  "shape"=sqrt(solve(optimizacion$hessian)[3,3])),
