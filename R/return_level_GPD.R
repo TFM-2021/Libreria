@@ -25,12 +25,12 @@ return_level_GPD = function(model_fit,
   V <- matrix(NA,3,3)
 
   V[2,] <- c(0,
-             as.numeric(fit_gpd_yo$Matriz_covarianzas[1,1]),
-             as.numeric(fit_gpd_yo$Matriz_covarianzas[2,1]))
+             as.numeric(model_fit$Matriz_covarianzas[1,1]),
+             as.numeric(model_fit$Matriz_covarianzas[2,1]))
 
   V[3,] <- c(0,
-             as.numeric(fit_gpd_yo$Matriz_covarianzas[1,2]),
-             as.numeric(fit_gpd_yo$Matriz_covarianzas[2,2]))
+             as.numeric(model_fit$Matriz_covarianzas[1,2]),
+             as.numeric(model_fit$Matriz_covarianzas[2,2]))
 
   rate <- length(data[data>threshold])/length(data)
 
