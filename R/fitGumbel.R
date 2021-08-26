@@ -112,8 +112,8 @@ fitGumbel =  function(x, metodo_optimizacion=NULL){
 
   list("Valores_optimos"=resultados_fit,
        "Negative_Log_Likelihood"=verosimilitud,
-       "AIC" =2*3+2*verosimilitud,
-       "BIC" = 2*verosimilitud+3*log(length(x)),
+       "AIC" =2*2+2*verosimilitud,
+       "BIC" = 2*verosimilitud+2*log(length(x)),
        "Desviaciones_tipicas_estimadas" = tibble("location"=sqrt(solve(optimizacion$hessian)[1,1]),
                                                  "scale"=sqrt(solve(optimizacion$hessian)[2,2])),
        "Matriz_covarianzas" = tibble("location"=solve(optimizacion$hessian)[1,],
