@@ -4,7 +4,7 @@
 
 
 
-pp_base <- function(data, shape = 1, location = 0, scale = 1){
+pp_base <- function(data, shape = 1, location = 0.5, scale = 1){
 
   quantiles <- location + (scale/shape) * (( - logb(ppoints(data)))^( - shape) - 1)
 

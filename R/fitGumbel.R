@@ -120,15 +120,6 @@ fitGumbel =  function(x, metodo_optimizacion=NULL){
                                      "scale"=solve(optimizacion$hessian)[2,]))
 
 }
-fit_yo <- fitGumbel(danishuni$Loss)
-plot_location
-plot_scale
-fit <- extRemes::fevd(danishuni$Loss, type = "Gumbel")
-extRemes::return.level(fit)
-
-
-
-1.98-1.74*log(-log(1-1/20))
 
 
 
