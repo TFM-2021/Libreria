@@ -29,6 +29,7 @@ mean_excess_GEV = function(data){
     labs(title = "Mean excess",
          x = "Threshold",
          y = "Mean excess",
-         color = NULL)
+         color = NULL) +
+    theme_minimal()
 
 }
