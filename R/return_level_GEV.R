@@ -18,7 +18,7 @@ return_level_GEV = function(model_fit,
   scale <- model_fit$Valores_optimos[2,2]
   shape <- model_fit$Valores_optimos[3,2]
 
-
+  year <- year*365
 
   V <- as.matrix(model_fit$Matriz_covarianzas)
 
@@ -94,7 +94,7 @@ return_level_GEV = function(model_fit,
            subtitle = paste0("location: ", round(location,2),
                              " scale: ", round(scale,2),
                              " shape: ", round(shape,2)),
-           x = "Return year",
+           x = "Return day",
            y = "Return level",
            color = NULL) +
 

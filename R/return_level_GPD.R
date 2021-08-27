@@ -98,7 +98,7 @@ return_level_GPD = function(model_fit,
            subtitle = paste0("threshold: ", threshold,
                              " scale: ", round(scale,2),
                              " shape: ", round(shape,2)),
-           x = "Return year",
+           x = "Return day",
            y = "Return level",
            color = NULL) +
 

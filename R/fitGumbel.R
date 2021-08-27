@@ -17,7 +17,7 @@ fitGumbel =  function(x, metodo_optimizacion=NULL){
     -(-length(x)*log(desv)-sum((x-media)/desv)-sum(exp(-(x-media)/desv)))
 
   }
-  optimizacion <- optim(par=c(1,1), fn = eq,hessian = T)
+  optimizacion <- optim(par=c(0.1,0.1), fn = eq, hessian = T, method = "SANN")
   resultados_fit <- tibble("Parametro"= c("location", "scale"),
                            "Valores_optimos"= optimizacion$par)
 

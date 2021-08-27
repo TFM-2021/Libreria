@@ -16,7 +16,7 @@ return_level_Gumbel = function(model_fit,
 
   location <- model_fit$Valores_optimos[1,2]
   scale <- model_fit$Valores_optimos[2,2]
-
+  year <- 365 *year
 
   if(mode == "calculation"){
 
@@ -58,7 +58,7 @@ return_level_Gumbel = function(model_fit,
       labs(title =  "Return levels Gumbel: ",
            subtitle = paste0("location: ", round(location,2),
                              " scale: ", round(scale,2)),
-           x = "Return year",
+           x = "Return day",
            y = "Return level",
            color = NULL) +
 
